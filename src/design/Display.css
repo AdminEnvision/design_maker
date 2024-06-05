@@ -1,14 +1,43 @@
-html {
-    font-family: "Inter", sans-serif;
-  }
-  
-  @supports (font-variation-settings: normal) {
-    html {
-      font-family: "Inter var", sans-serif;
-    }
-  }
-  
-  .app {
+.imgTshirt {
+    position: relative;
+}
+
+.meme-Text {
+    position: absolute;
+    top: 150px;
+    left: 379px;
+}
+
+.meme-Text img {
+    max-width: 100px;
+    border: 6px solid #fff;
+}
+
+.meme-Text p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #fff;
+}
+
+.lowerText p {
+    margin-top: 10px;
+}
+
+.Tshirt-color img {
+    width: 15%;
+    height: 15%;
+}
+
+.Tshirt-color {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.filtertabs-container {
+    @apply absolute z-10 bottom-5 right-0 left-0 w-full flex justify-center items-center flex-wrap gap-4;
+}
+.app {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -71,6 +100,10 @@ html {
     border: 1px solid rgba(255, 255, 255, 0.18);
     cursor: pointer;
     outline: none;
+  }
+  canvas{
+    width: 1000px;
+    height: 500px;
   }
   
   .editortabs-container {
@@ -148,3 +181,41 @@ html {
     cursor: pointer;
     user-select: none;
   }
+  .tab-btn img{
+    width: 100%;
+   height: 100%; 
+  }
+
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 2px 30px 0 rgba(31, 38, 135, 0.07);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  input[type="file"] {
+    z-index: -1;
+    position: absolute;
+    opacity: 0;
+  }
+  .w-2-3 {
+    width: 66.66%;
+  }
+  
+  .h-2-3 {
+    height: 66.66%;
+  }
+  
+  .w-11-12 {
+    width: 91.66%;
+  }
+  
+  .h-11-12 {
+    height: 91.66%;
+  }
+  
+  .object-contain {
+    object-fit: contain;
+  }
+  
