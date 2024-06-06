@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 const urlImgbase = "./images/";
 import state from "../store"; // Adjust the path according to your project structure
 
+import Setting1 from "../components/setting1";
+
 function Setting({
   handleTshirtColor,
   handleUpperText,
@@ -15,7 +17,8 @@ function Setting({
   const colors = (color) => {
     handleTshirtColor(color);
   };
-  const [rangeValue, setRangeValue] = useState(0);
+
+  // const [rangeValue, setRangeValue] = useState(0);
   const handleChangeFile = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -28,20 +31,20 @@ function Setting({
     };
     reader.readAsDataURL(file);
   };
-  const prevRangeValue = useRef(rangeValue);
+  // const prevRangeValue = useRef(rangeValue);
 
-  const handleRangeChange = (event) => {
-    const newValue = parseInt(event.target.value);
-    if (newValue > prevRangeValue.current) {
-      state.frontTextScale[0] = state.frontTextScale[0] + 0.01;
-      state.frontTextScale[1] = state.frontTextScale[1] + 0.01;
-    } else if (newValue < prevRangeValue.current) {
-      state.frontTextScale[0] = state.frontTextScale[0] - 0.01;
-      state.frontTextScale[1] = state.frontTextScale[1] - 0.01;
-    }
-    prevRangeValue.current = newValue;
-    setRangeValue(newValue);
-  };
+  // const handleRangeChange = (event) => {
+  //   const newValue = parseInt(event.target.value);
+  //   if (newValue > prevRangeValue.current) {
+  //     state.frontTextScale[0] = state.frontTextScale[0] + 0.01;
+  //     state.frontTextScale[1] = state.frontTextScale[1] + 0.01;
+  //   } else if (newValue < prevRangeValue.current) {
+  //     state.frontTextScale[0] = state.frontTextScale[0] - 0.01;
+  //     state.frontTextScale[1] = state.frontTextScale[1] - 0.01;
+  //   }
+  //   prevRangeValue.current = newValue;
+  //   setRangeValue(newValue);
+  // };
   return (
     <div>
       <div className="card bg-light container">
@@ -109,15 +112,18 @@ function Setting({
             placeholder="upper text"
           />
         </div>
+
+        <Setting1></Setting1>
+
         <hr />
-        <h4>Text size</h4>
-        <input
+        {/* <h4>Text size</h4> */}
+        {/* <input
           onChange={handleRangeChange}
           type="range"
           min={0}
           max={100}
           value={rangeValue}
-        />
+        /> */}
 
         <hr />
         <h4>Text Color</h4>

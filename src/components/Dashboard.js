@@ -32,6 +32,7 @@ function Dashboard({ saveDesign }) {
   const [tshirtColor, settShirtColor] = useState({
     tshirtColors: "black",
     upperText: "upper text",
+    upperText1: "upper text",
     lowerText: "lower text",
     memeImg: "",
     url: "",
@@ -44,6 +45,10 @@ function Dashboard({ saveDesign }) {
   };
 
   let handleUpperText = (text) => {
+    settShirtColor({ ...tshirtColor, upperText: text });
+  };
+  
+  let handleTextChange = (text) => {
     settShirtColor({ ...tshirtColor, upperText: text });
   };
 
@@ -114,6 +119,7 @@ function Dashboard({ saveDesign }) {
           <Setting
             handleTshirtColor={handleTshirtColor}
             handleUpperText={handleUpperText}
+            handleTextChange={handleTextChange}
             handleLowerText={handleLowerText}
             uploadImage={handleImageUpload}
             handleChange={handleImageUploadChange}
@@ -121,7 +127,6 @@ function Dashboard({ saveDesign }) {
             colortext={handletextcolor}
             saveDesign={writeData}
           />
-          
         </div>
       </div>
     </div>

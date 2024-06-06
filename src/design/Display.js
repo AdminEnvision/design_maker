@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Display.css";
 import "../index.css";
 import { AnimatePresence, motion } from "framer-motion";
@@ -14,17 +14,12 @@ import {
   DecalTypes,
   texturesLogos,
 } from "../config/constants";
-import { fadeAnimation, slideAnimation } from "../config/motion";
-import {
-  ColorPicker,
-  CustomButton,
-  FilePicker,
-  TextureLogoPicker,
-  Tab,
-} from "../components";
+import { slideAnimation } from "../config/motion";
+import { ColorPicker, FilePicker, TextureLogoPicker, Tab } from "../components";
 import Canvas from "../canvas";
 
-function Display({ display, imageDisplay }) {
+function Display({ display, imageDisplay, text1, radius }) {
+  const canvasRef = useRef(null);
   const snap = useSnapshot(state);
 
   const [file, setFile] = useState("");
@@ -129,9 +124,24 @@ function Display({ display, imageDisplay }) {
         return null;
     }
   };
+  // bend
 
-  // console.log(textformat);
-  console.log(display.textcolor);
+  // useEffect(() => {
+  //   const canvas = canvasRef.current;
+  //   const context = canvas.getContext("2d");
+
+  //   // Clear the canvas
+  //   context.clearRect(0, 0, canvas.width, canvas.height);
+
+  //   // Draw the T-shirt
+  //   // ...
+
+  //   // Draw the circular text
+  //   utils(context, text1, canvas.width / 2, canvas.height / 2, radius);
+  // }, [text1, radius]);
+
+  // // console.log(textformat);
+  // console.log(display.textcolor);
   return (
     <AnimatePresence>
       <div className="">
@@ -161,6 +171,10 @@ function Display({ display, imageDisplay }) {
                 {display.lowerText}
               </p>
             </div> */}
+          </div>
+          <div>
+            <canvas ref={canvasRef} />
+            {/* ... */}
           </div>
           <div>
             {
@@ -215,6 +229,7 @@ function Display({ display, imageDisplay }) {
           </div>
         </div>
       </div>
+      {/* <Display radius={radius} /> */}
     </AnimatePresence>
   );
 }

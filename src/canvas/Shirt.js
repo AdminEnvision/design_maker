@@ -35,6 +35,23 @@ const Shirt = () => {
     ctx.fillText(text, 0, size);
     return new THREE.CanvasTexture(canvas);
   };
+  const createTextTexture1 = (text, font, size, color) => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.font = `${size}px ${font}`;
+    const textWidth = ctx.measureText(text).width;
+    canvas.width = textWidth;
+    canvas.height = size;
+    ctx.fillStyle = color;
+    ctx.font = `${size}px ${font}`;
+    ctx.fillText(text, 0, size);
+    return new THREE.CanvasTexture(canvas);
+  };
+  // const createTextTexture = (text, font, size, color) => {
+  //   //...
+  //   ctx.font = `${size}px ${font}`;
+  //   //...
+  // };
 
   return (
     <>
@@ -76,8 +93,22 @@ const Shirt = () => {
               map={createTextTexture(
                 state.frontText,
                 state.frontTextFont,
-                state.frontTextSize,
+                state.frontTextSize, // Use global state value
                 state.frontTextColor
+              )}
+            />
+          )}
+
+          {state.isFrontText1 && (
+            <Decal
+              position={state.frontTextPosition1}
+              rotation={state.frontTextRotation1}
+              scale={state.frontTextScale1}
+              map={createTextTexture(
+                state.frontText1,
+                state.frontTextFont1,
+                state.frontTextSize1, // Use global state value
+                state.frontTextColor1
               )}
             />
           )}
@@ -92,6 +123,16 @@ const Shirt = () => {
               depthWrite={true}
             />
           )}
+
+          {/* <Decal
+            //...
+            map={createTextTexture(
+              state.frontText,
+              state.frontTextFont,
+              state.frontTextSize, // Use global state value
+              state.frontTextColor
+            )}
+          /> */}
           {snap.isBackText && (
             <Decal
               position={snap.backTextPosition}
@@ -105,6 +146,8 @@ const Shirt = () => {
               )}
             />
           )}
+          
+          
         </mesh>
       </group>
     </>
